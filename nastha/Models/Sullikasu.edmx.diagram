@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cd4a95470ca44ba3b973856e8ac56739" Name="Diagram1">
+        <EntityTypeShape EntityType="nasthaModel.advertiser_exclusion_dates" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.advertiser_staff_cell_phone_numbers" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.amenity" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.amenity_types" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.bill" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.biz_hours" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.biz_types" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.city_marketing_budget" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.marketing_budget_spends" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.merchant" Width="1.5" PointX="0.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.merchant_advertisers" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.monthly_bills" Width="1.5" PointX="3" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.nastha_credits" Width="1.5" PointX="3" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.nastha_redemptions" Width="1.5" PointX="3" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.order" Width="1.5" PointX="3" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.picture" Width="1.5" PointX="3" PointY="42.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.product" Width="1.5" PointX="3" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.product_types" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.referred_users" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.registration_codes" Width="1.5" PointX="3" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.subscription" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.system_configs" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.token" Width="1.5" PointX="3" PointY="51.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.tos_agreements" Width="1.5" PointX="3" PointY="54.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.user_merchant_referrals" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.user_types" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nasthaModel.user" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="nasthaModel.FK_ADVTMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_ADVTCellMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_AmenitiesMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_billMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_BizHoursMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_MBtMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_MerchantId" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_NCMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_NRMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_OrdersMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_PicturetMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_ProductMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_RCMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_TokensMerchant" ManuallyRouted="false" />
+        <AssociationConnector Association="nasthaModel.FK_TOSMerchant" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="nasthaModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="merchant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="sublocality" Type="varchar" MaxLength="255" />
+          <Property Name="city" Type="varchar" MaxLength="255" />
+          <Property Name="state" Type="varchar" MaxLength="255" />
+          <Property Name="zipcode" Type="varchar" MaxLength="255" />
+          <Property Name="country" Type="varchar" MaxLength="2" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+          <Property Name="thumbnail_photo_url" Type="varchar" MaxLength="1024" />
+          <Property Name="type" Type="varchar" MaxLength="255" />
+          <Property Name="phone" Type="varchar" MaxLength="255" />
+          <Property Name="referred_phone_number" Type="varchar" MaxLength="255" />
+          <Property Name="permanent_cell_phone_number" Type="varchar" MaxLength="255" />
+          <Property Name="website" Type="varchar" MaxLength="255" />
+          <Property Name="rating" Type="decimal" Precision="1" Scale="1" />
+          <Property Name="advertiser" Type="varchar" MaxLength="1" />
+          <Property Name="opt_out" Type="varchar" MaxLength="1" />
+          <Property Name="cumulative_referrals" Type="int" />
+          <Property Name="black_listed" Type="varchar" MaxLength="1" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="place_id" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="interior_photo_url" Type="varchar" MaxLength="1024" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PicturetMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="picture" Type="Self.picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="picture">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="nasthaModelStoreContainer">
+          <EntitySet Name="merchant" EntityType="Self.merchant" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="picture" EntityType="Self.picture" Schema="nastha" store:Type="Tables" />
+          <AssociationSet Name="FK_PicturetMerchant" Association="Self.FK_PicturetMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="picture" EntitySet="picture" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="nasthaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="merchant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sublocality" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="zipcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="latitude" Type="Single" />
+          <Property Name="longitude" Type="Single" />
+          <Property Name="thumbnail_photo_url" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="referred_phone_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="permanent_cell_phone_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="website" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Decimal" />
+          <Property Name="advertiser" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="opt_out" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cumulative_referrals" Type="Int32" />
+          <Property Name="black_listed" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <Property Name="place_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="pictures" Relationship="nasthaModel.FK_PicturetMerchant" FromRole="merchant" ToRole="picture" />
+        </EntityType>
+        <EntityContainer Name="TextSearch" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="merchants" EntityType="Self.merchant" />
+          <EntitySet Name="pictures" EntityType="nasthaModel.picture" />
+          <AssociationSet Name="FK_PicturetMerchant" Association="nasthaModel.FK_PicturetMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="picture" EntitySet="pictures" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="interior_photo_url" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="nasthaModel.FK_PicturetMerchant" FromRole="picture" ToRole="merchant" />
+        </EntityType>
+        <Association Name="FK_PicturetMerchant">
+          <End Type="nasthaModel.merchant" Role="merchant" Multiplicity="0..1" />
+          <End Type="nasthaModel.picture" Role="picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="picture">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="nasthaModelStoreContainer" CdmEntityContainer="TextSearch">
+          <EntitySetMapping Name="merchants">
+            <EntityTypeMapping TypeName="nasthaModel.merchant">
+              <MappingFragment StoreEntitySet="merchant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="sublocality" ColumnName="sublocality" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="thumbnail_photo_url" ColumnName="thumbnail_photo_url" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="referred_phone_number" ColumnName="referred_phone_number" />
+                <ScalarProperty Name="permanent_cell_phone_number" ColumnName="permanent_cell_phone_number" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="advertiser" ColumnName="advertiser" />
+                <ScalarProperty Name="opt_out" ColumnName="opt_out" />
+                <ScalarProperty Name="cumulative_referrals" ColumnName="cumulative_referrals" />
+                <ScalarProperty Name="black_listed" ColumnName="black_listed" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pictures">
+            <EntityTypeMapping TypeName="nasthaModel.picture">
+              <MappingFragment StoreEntitySet="picture">
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="interior_photo_url" ColumnName="interior_photo_url" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
