@@ -1,0 +1,1726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="nasthaModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="advertiser_exclusion_dates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" Nullable="false" />
+          <Property Name="excluded_date" Type="date" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="advertiser_staff_cell_phone_numbers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="staff_name" Type="varchar" MaxLength="255" />
+          <Property Name="staff_cell_phone_number" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="amenities">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="amenity_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amenity_type" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bills">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="token_number" Type="int" />
+          <Property Name="bill_date" Type="date" />
+          <Property Name="gross_amount" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="alcohol_total" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="net_amount" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="biz_hours">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="day_of_week" Type="int" />
+          <Property Name="display_merchant_for" Type="varchar" MaxLength="255" />
+          <Property Name="start_time" Type="varchar" MaxLength="8" />
+          <Property Name="end_time" Type="varchar" MaxLength="8" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="biz_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="city_marketing_budget">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="255" />
+          <Property Name="state" Type="varchar" MaxLength="255" />
+          <Property Name="budget" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="marketing_budget_spends">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="per_city_id" Type="int" />
+          <Property Name="zipcode" Type="varchar" MaxLength="255" />
+          <Property Name="spent_on_conversions" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="merchant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="sublocality" Type="varchar" MaxLength="255" />
+          <Property Name="city" Type="varchar" MaxLength="255" />
+          <Property Name="state" Type="varchar" MaxLength="255" />
+          <Property Name="zipcode" Type="varchar" MaxLength="255" />
+          <Property Name="country" Type="varchar" MaxLength="2" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
+          <Property Name="thumbnail_photo_url" Type="varchar" MaxLength="1024" />
+          <Property Name="type" Type="varchar" MaxLength="255" />
+          <Property Name="phone" Type="varchar" MaxLength="255" />
+          <Property Name="referred_phone_number" Type="varchar" MaxLength="255" />
+          <Property Name="permanent_cell_phone_number" Type="varchar" MaxLength="255" />
+          <Property Name="website" Type="varchar" MaxLength="255" />
+          <Property Name="rating" Type="decimal" Precision="1" Scale="1" />
+          <Property Name="advertiser" Type="varchar" MaxLength="1" />
+          <Property Name="opt_out" Type="varchar" MaxLength="1" />
+          <Property Name="cumulative_referrals" Type="int" />
+          <Property Name="black_listed" Type="varchar" MaxLength="1" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="place_id" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="merchant_advertisers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="1" />
+          <Property Name="date_merchant_became_advertiser" Type="date" />
+          <Property Name="subscription_id" Type="int" />
+          <Property Name="subscription_last_date_change" Type="date" />
+          <Property Name="info_text" Type="varchar" MaxLength="255" />
+          <Property Name="deposit_balance" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="cashback_percentage" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="lowest_balance_reached_date" Type="date" />
+          <Property Name="owner_name" Type="varchar" MaxLength="255" />
+          <Property Name="owner_cell_phone_number" Type="varchar" MaxLength="255" />
+          <Property Name="owner_email" Type="varchar" MaxLength="255" />
+          <Property Name="manager_name" Type="varchar" MaxLength="255" />
+          <Property Name="manager_cell_phone_number" Type="varchar" MaxLength="255" />
+          <Property Name="manager_email" Type="varchar" MaxLength="255" />
+          <Property Name="min_order_value" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="commission_for_alcohol" Type="varchar" MaxLength="1" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="monthly_bills">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="cumul_bill_amt" Type="int" />
+          <Property Name="total_bills" Type="int" />
+          <Property Name="cumul_amt_free_cbk" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="cumul_expcbk_today" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="cumul_exp_cbk_pday" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="cumul_comm_today" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="cumul_comm_pday" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="forfeited_amt_today" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="forfeited_amt_pday" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="month" Type="int" />
+          <Property Name="year" Type="int" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nastha_credits">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="credit_received" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="credit_type" Type="varchar" MaxLength="1" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nastha_redemptions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="amount_redeemed" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="token_number" Type="int" />
+          <Property Name="net_amount" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="gross_amount" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="alcohol_total" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="cashback_percentage" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="prorated_gross_amount" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="prorated_alcohol_total" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="order_time" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="referral_cost" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="sor_gross_revenue" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="sor_net_revenue" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="user_commission" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="cashback" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="user_payment_to_merchant" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="created_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="interior_photo_url" Type="varchar" MaxLength="1024" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="cusine_name" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="biz_type_id" Type="int" Nullable="false" />
+          <Property Name="product_type" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="referred_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="referred_user_email_address" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="registration_codes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="registration_code" Type="int" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="subscriptions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="commission_percentage" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="deposit" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="min_deposit_balance" Type="decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="system_configs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="tag" Type="varchar" MaxLength="255" />
+          <Property Name="value" Type="varchar" MaxLength="255" />
+          <Property Name="country" Type="varchar" MaxLength="2" />
+          <Property Name="server_or_app" Type="varchar" MaxLength="1" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tokens">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="token_number" Type="int" />
+          <Property Name="cell_number" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tos_agreements">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="agreement_time" Type="datetime" Precision="0" />
+          <Property Name="agreement_file" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_merchant_referrals">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="cell_phone_entered_by_user" Type="varchar" MaxLength="255" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_type" Type="varchar" MaxLength="2" />
+          <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="40" />
+          <Property Name="last_name" Type="varchar" MaxLength="40" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="user_type_id" Type="int" />
+          <Property Name="merchant_id" Type="int" />
+          <Property Name="user_deactivated_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="encrypted_password" Type="varchar" MaxLength="128" />
+          <Property Name="reset_password_token" Type="varchar" MaxLength="255" />
+          <Property Name="reset_password_token_sent_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="remember_created_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="sign_in_count" Type="int" />
+          <Property Name="current_sign_in_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="last_sign_in_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="current_sign_ip" Type="varchar" MaxLength="255" />
+          <Property Name="last_sign_in_ip" Type="varchar" MaxLength="255" />
+          <Property Name="confirmation_token" Type="varchar" MaxLength="255" />
+          <Property Name="confirmed_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="confirmation_sent_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="failed_attempts" Type="int" />
+          <Property Name="unlock_token" Type="varchar" MaxLength="255" />
+          <Property Name="locked_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="created_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ADVTCellMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="advertiser_staff_cell_phone_numbers" Type="Self.advertiser_staff_cell_phone_numbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="advertiser_staff_cell_phone_numbers">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADVTMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="1" />
+          <End Role="advertiser_exclusion_dates" Type="Self.advertiser_exclusion_dates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="advertiser_exclusion_dates">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AmenitiesMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="amenities" Type="Self.amenities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="amenities">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_AmenitiesName' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_AmenitiesName" />-->
+        <Association Name="FK_billMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="bills" Type="Self.bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bills">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BizHoursMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="biz_hours" Type="Self.biz_hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="biz_hours">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MBtMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="monthly_bills" Type="Self.monthly_bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="monthly_bills">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_MerchantBizType' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_MerchantBizType" />-->
+        <Association Name="FK_MerchantId">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="1" />
+          <End Role="merchant_advertisers" Type="Self.merchant_advertisers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="merchant_advertisers">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NCMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="nastha_credits" Type="Self.nastha_credits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="nastha_credits">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NRMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="nastha_redemptions" Type="Self.nastha_redemptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="nastha_redemptions">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PicturetMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="picture" Type="Self.picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="picture">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RCMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="registration_codes" Type="Self.registration_codes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="registration_codes">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TokensMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="tokens" Type="Self.tokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tokens">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TOSMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="tos_agreements" Type="Self.tos_agreements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tos_agreements">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="nasthaModelStoreContainer">
+          <EntitySet Name="advertiser_exclusion_dates" EntityType="Self.advertiser_exclusion_dates" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="advertiser_staff_cell_phone_numbers" EntityType="Self.advertiser_staff_cell_phone_numbers" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="amenities" EntityType="Self.amenities" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="amenity_types" EntityType="Self.amenity_types" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="bills" EntityType="Self.bills" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="biz_hours" EntityType="Self.biz_hours" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="biz_types" EntityType="Self.biz_types" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="city_marketing_budget" EntityType="Self.city_marketing_budget" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="marketing_budget_spends" EntityType="Self.marketing_budget_spends" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="merchant" EntityType="Self.merchant" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="merchant_advertisers" EntityType="Self.merchant_advertisers" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="monthly_bills" EntityType="Self.monthly_bills" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="nastha_credits" EntityType="Self.nastha_credits" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="nastha_redemptions" EntityType="Self.nastha_redemptions" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="picture" EntityType="Self.picture" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="product_types" EntityType="Self.product_types" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="referred_users" EntityType="Self.referred_users" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="registration_codes" EntityType="Self.registration_codes" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="subscriptions" EntityType="Self.subscriptions" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="system_configs" EntityType="Self.system_configs" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="tokens" EntityType="Self.tokens" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="tos_agreements" EntityType="Self.tos_agreements" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="user_merchant_referrals" EntityType="Self.user_merchant_referrals" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="user_types" EntityType="Self.user_types" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="nastha" store:Type="Tables" />
+          <AssociationSet Name="FK_ADVTCellMerchant" Association="Self.FK_ADVTCellMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="advertiser_staff_cell_phone_numbers" EntitySet="advertiser_staff_cell_phone_numbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADVTMerchant" Association="Self.FK_ADVTMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="advertiser_exclusion_dates" EntitySet="advertiser_exclusion_dates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AmenitiesMerchant" Association="Self.FK_AmenitiesMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="amenities" EntitySet="amenities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_billMerchant" Association="Self.FK_billMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="bills" EntitySet="bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BizHoursMerchant" Association="Self.FK_BizHoursMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="biz_hours" EntitySet="biz_hours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MBtMerchant" Association="Self.FK_MBtMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="monthly_bills" EntitySet="monthly_bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MerchantId" Association="Self.FK_MerchantId">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="merchant_advertisers" EntitySet="merchant_advertisers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NCMerchant" Association="Self.FK_NCMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="nastha_credits" EntitySet="nastha_credits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NRMerchant" Association="Self.FK_NRMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="nastha_redemptions" EntitySet="nastha_redemptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersMerchant" Association="Self.FK_OrdersMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PicturetMerchant" Association="Self.FK_PicturetMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="picture" EntitySet="picture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMerchant" Association="Self.FK_ProductMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RCMerchant" Association="Self.FK_RCMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="registration_codes" EntitySet="registration_codes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TokensMerchant" Association="Self.FK_TokensMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="tokens" EntitySet="tokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TOSMerchant" Association="Self.FK_TOSMerchant">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="tos_agreements" EntitySet="tos_agreements" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="nasthaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="advertiser_exclusion_dates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" Nullable="false" />
+          <Property Name="excluded_date" Type="DateTime" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_ADVTMerchant" FromRole="advertiser_exclusion_dates" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="advertiser_staff_cell_phone_numbers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="staff_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="staff_cell_phone_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_ADVTCellMerchant" FromRole="advertiser_staff_cell_phone_numbers" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="amenity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_AmenitiesMerchant" FromRole="amenities" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="amenity_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amenity_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bill">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="token_number" Type="Int32" />
+          <Property Name="bill_date" Type="DateTime" />
+          <Property Name="gross_amount" Type="Decimal" />
+          <Property Name="alcohol_total" Type="Decimal" />
+          <Property Name="net_amount" Type="Decimal" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_billMerchant" FromRole="bills" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="biz_hours">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="day_of_week" Type="Int32" />
+          <Property Name="display_merchant_for" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="start_time" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="end_time" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_BizHoursMerchant" FromRole="biz_hours" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="biz_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="city_marketing_budget">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="budget" Type="Decimal" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="marketing_budget_spends">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="per_city_id" Type="Int32" />
+          <Property Name="zipcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="spent_on_conversions" Type="Decimal" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="merchant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sublocality" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="zipcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="latitude" Type="Single" />
+          <Property Name="longitude" Type="Single" />
+          <Property Name="thumbnail_photo_url" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="referred_phone_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="permanent_cell_phone_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="website" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Decimal" />
+          <Property Name="advertiser" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="opt_out" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="cumulative_referrals" Type="Int32" />
+          <Property Name="black_listed" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <Property Name="place_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="advertiser_exclusion_dates" Relationship="Self.FK_ADVTMerchant" FromRole="merchant" ToRole="advertiser_exclusion_dates" />
+          <NavigationProperty Name="advertiser_staff_cell_phone_numbers" Relationship="Self.FK_ADVTCellMerchant" FromRole="merchant" ToRole="advertiser_staff_cell_phone_numbers" />
+          <NavigationProperty Name="amenities" Relationship="Self.FK_AmenitiesMerchant" FromRole="merchant" ToRole="amenities" />
+          <NavigationProperty Name="bills" Relationship="Self.FK_billMerchant" FromRole="merchant" ToRole="bills" />
+          <NavigationProperty Name="biz_hours" Relationship="Self.FK_BizHoursMerchant" FromRole="merchant" ToRole="biz_hours" />
+          <NavigationProperty Name="monthly_bills" Relationship="Self.FK_MBtMerchant" FromRole="merchant" ToRole="monthly_bills" />
+          <NavigationProperty Name="merchant_advertisers" Relationship="Self.FK_MerchantId" FromRole="merchant" ToRole="merchant_advertisers" />
+          <NavigationProperty Name="nastha_credits" Relationship="Self.FK_NCMerchant" FromRole="merchant" ToRole="nastha_credits" />
+          <NavigationProperty Name="nastha_redemptions" Relationship="Self.FK_NRMerchant" FromRole="merchant" ToRole="nastha_redemptions" />
+          <NavigationProperty Name="orders" Relationship="Self.FK_OrdersMerchant" FromRole="merchant" ToRole="orders" />
+          <NavigationProperty Name="pictures" Relationship="Self.FK_PicturetMerchant" FromRole="merchant" ToRole="picture" />
+          <NavigationProperty Name="products" Relationship="Self.FK_ProductMerchant" FromRole="merchant" ToRole="product" />
+          <NavigationProperty Name="registration_codes" Relationship="Self.FK_RCMerchant" FromRole="merchant" ToRole="registration_codes" />
+          <NavigationProperty Name="tokens" Relationship="Self.FK_TokensMerchant" FromRole="merchant" ToRole="tokens" />
+          <NavigationProperty Name="tos_agreements" Relationship="Self.FK_TOSMerchant" FromRole="merchant" ToRole="tos_agreements" />
+        </EntityType>
+        <EntityType Name="merchant_advertisers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="date_merchant_became_advertiser" Type="DateTime" />
+          <Property Name="subscription_id" Type="Int32" />
+          <Property Name="subscription_last_date_change" Type="DateTime" />
+          <Property Name="info_text" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="deposit_balance" Type="Decimal" />
+          <Property Name="cashback_percentage" Type="Decimal" />
+          <Property Name="lowest_balance_reached_date" Type="DateTime" />
+          <Property Name="owner_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="owner_cell_phone_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="owner_email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="manager_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="manager_cell_phone_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="manager_email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="min_order_value" Type="Decimal" />
+          <Property Name="commission_for_alcohol" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_MerchantId" FromRole="merchant_advertisers" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="monthly_bills">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="cumul_bill_amt" Type="Int32" />
+          <Property Name="total_bills" Type="Int32" />
+          <Property Name="cumul_amt_free_cbk" Type="Decimal" />
+          <Property Name="cumul_expcbk_today" Type="Decimal" />
+          <Property Name="cumul_exp_cbk_pday" Type="Decimal" />
+          <Property Name="cumul_comm_today" Type="Decimal" />
+          <Property Name="cumul_comm_pday" Type="Decimal" />
+          <Property Name="forfeited_amt_today" Type="Decimal" />
+          <Property Name="forfeited_amt_pday" Type="Decimal" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_MBtMerchant" FromRole="monthly_bills" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="nastha_credits">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="credit_received" Type="Decimal" />
+          <Property Name="credit_type" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_NCMerchant" FromRole="nastha_credits" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="nastha_redemptions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="amount_redeemed" Type="Decimal" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_NRMerchant" FromRole="nastha_redemptions" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="token_number" Type="Int32" />
+          <Property Name="net_amount" Type="Decimal" />
+          <Property Name="gross_amount" Type="Decimal" />
+          <Property Name="alcohol_total" Type="Decimal" />
+          <Property Name="cashback_percentage" Type="Decimal" />
+          <Property Name="prorated_gross_amount" Type="Decimal" />
+          <Property Name="prorated_alcohol_total" Type="Decimal" />
+          <Property Name="order_time" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="referral_cost" Type="Decimal" />
+          <Property Name="sor_gross_revenue" Type="Decimal" />
+          <Property Name="sor_net_revenue" Type="Decimal" />
+          <Property Name="user_commission" Type="Decimal" />
+          <Property Name="cashback" Type="Decimal" />
+          <Property Name="user_payment_to_merchant" Type="Decimal" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_OrdersMerchant" FromRole="orders" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="interior_photo_url" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_PicturetMerchant" FromRole="picture" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="cusine_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_ProductMerchant" FromRole="product" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="product_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="biz_type_id" Type="Int32" Nullable="false" />
+          <Property Name="product_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="referred_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="referred_user_email_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="registration_codes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="registration_code" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_RCMerchant" FromRole="registration_codes" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="subscription">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="commission_percentage" Type="Decimal" />
+          <Property Name="deposit" Type="Decimal" />
+          <Property Name="min_deposit_balance" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="system_configs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="tag" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="server_or_app" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="token">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="token_number" Type="Int32" />
+          <Property Name="cell_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_TokensMerchant" FromRole="tokens" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="tos_agreements">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="agreement_time" Type="DateTime" />
+          <Property Name="agreement_file" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="merchant" Relationship="Self.FK_TOSMerchant" FromRole="tos_agreements" ToRole="merchant" />
+        </EntityType>
+        <EntityType Name="user_merchant_referrals">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="cell_phone_entered_by_user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_type" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="user_type_id" Type="Int32" />
+          <Property Name="merchant_id" Type="Int32" />
+          <Property Name="user_deactivated_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="encrypted_password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="reset_password_token" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="reset_password_token_sent_at" Type="DateTime" Nullable="false" />
+          <Property Name="remember_created_at" Type="DateTime" Nullable="false" />
+          <Property Name="sign_in_count" Type="Int32" />
+          <Property Name="current_sign_in_at" Type="DateTime" Nullable="false" />
+          <Property Name="last_sign_in_at" Type="DateTime" Nullable="false" />
+          <Property Name="current_sign_ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="last_sign_in_ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="confirmation_token" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="confirmed_at" Type="DateTime" Nullable="false" />
+          <Property Name="confirmation_sent_at" Type="DateTime" Nullable="false" />
+          <Property Name="failed_attempts" Type="Int32" />
+          <Property Name="unlock_token" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="locked_at" Type="DateTime" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ADVTMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="1" />
+          <End Role="advertiser_exclusion_dates" Type="Self.advertiser_exclusion_dates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="advertiser_exclusion_dates">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADVTCellMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="advertiser_staff_cell_phone_numbers" Type="Self.advertiser_staff_cell_phone_numbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="advertiser_staff_cell_phone_numbers">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AmenitiesMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="amenities" Type="Self.amenity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="amenities">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_billMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="bills" Type="Self.bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bills">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BizHoursMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="biz_hours" Type="Self.biz_hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="biz_hours">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MBtMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="monthly_bills" Type="Self.monthly_bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="monthly_bills">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MerchantId">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="1" />
+          <End Role="merchant_advertisers" Type="Self.merchant_advertisers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="merchant_advertisers">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NCMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="nastha_credits" Type="Self.nastha_credits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="nastha_credits">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NRMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="nastha_redemptions" Type="Self.nastha_redemptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="nastha_redemptions">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PicturetMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="picture" Type="Self.picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="picture">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RCMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="registration_codes" Type="Self.registration_codes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="registration_codes">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TokensMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="tokens" Type="Self.token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tokens">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TOSMerchant">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+          <End Role="tos_agreements" Type="Self.tos_agreements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tos_agreements">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="nasthaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="advertiser_exclusion_dates" EntityType="Self.advertiser_exclusion_dates" />
+          <EntitySet Name="advertiser_staff_cell_phone_numbers" EntityType="Self.advertiser_staff_cell_phone_numbers" />
+          <EntitySet Name="amenities" EntityType="Self.amenity" />
+          <EntitySet Name="amenity_types" EntityType="Self.amenity_types" />
+          <EntitySet Name="bills" EntityType="Self.bill" />
+          <EntitySet Name="biz_hours" EntityType="Self.biz_hours" />
+          <EntitySet Name="biz_types" EntityType="Self.biz_types" />
+          <EntitySet Name="city_marketing_budget" EntityType="Self.city_marketing_budget" />
+          <EntitySet Name="marketing_budget_spends" EntityType="Self.marketing_budget_spends" />
+          <EntitySet Name="merchants" EntityType="Self.merchant" />
+          <EntitySet Name="merchant_advertisers" EntityType="Self.merchant_advertisers" />
+          <EntitySet Name="monthly_bills" EntityType="Self.monthly_bills" />
+          <EntitySet Name="nastha_credits" EntityType="Self.nastha_credits" />
+          <EntitySet Name="nastha_redemptions" EntityType="Self.nastha_redemptions" />
+          <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="pictures" EntityType="Self.picture" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="product_types" EntityType="Self.product_types" />
+          <EntitySet Name="referred_users" EntityType="Self.referred_users" />
+          <EntitySet Name="registration_codes" EntityType="Self.registration_codes" />
+          <EntitySet Name="subscriptions" EntityType="Self.subscription" />
+          <EntitySet Name="system_configs" EntityType="Self.system_configs" />
+          <EntitySet Name="tokens" EntityType="Self.token" />
+          <EntitySet Name="tos_agreements" EntityType="Self.tos_agreements" />
+          <EntitySet Name="user_merchant_referrals" EntityType="Self.user_merchant_referrals" />
+          <EntitySet Name="user_types" EntityType="Self.user_types" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK_ADVTMerchant" Association="Self.FK_ADVTMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="advertiser_exclusion_dates" EntitySet="advertiser_exclusion_dates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADVTCellMerchant" Association="Self.FK_ADVTCellMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="advertiser_staff_cell_phone_numbers" EntitySet="advertiser_staff_cell_phone_numbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AmenitiesMerchant" Association="Self.FK_AmenitiesMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="amenities" EntitySet="amenities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_billMerchant" Association="Self.FK_billMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="bills" EntitySet="bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BizHoursMerchant" Association="Self.FK_BizHoursMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="biz_hours" EntitySet="biz_hours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MBtMerchant" Association="Self.FK_MBtMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="monthly_bills" EntitySet="monthly_bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MerchantId" Association="Self.FK_MerchantId">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="merchant_advertisers" EntitySet="merchant_advertisers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NCMerchant" Association="Self.FK_NCMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="nastha_credits" EntitySet="nastha_credits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NRMerchant" Association="Self.FK_NRMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="nastha_redemptions" EntitySet="nastha_redemptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersMerchant" Association="Self.FK_OrdersMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PicturetMerchant" Association="Self.FK_PicturetMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="picture" EntitySet="pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMerchant" Association="Self.FK_ProductMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RCMerchant" Association="Self.FK_RCMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="registration_codes" EntitySet="registration_codes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TokensMerchant" Association="Self.FK_TokensMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="tokens" EntitySet="tokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TOSMerchant" Association="Self.FK_TOSMerchant">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="tos_agreements" EntitySet="tos_agreements" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="nasthaModelStoreContainer" CdmEntityContainer="nasthaEntities">
+          <EntitySetMapping Name="advertiser_exclusion_dates">
+            <EntityTypeMapping TypeName="nasthaModel.advertiser_exclusion_dates">
+              <MappingFragment StoreEntitySet="advertiser_exclusion_dates">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="excluded_date" ColumnName="excluded_date" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="advertiser_staff_cell_phone_numbers">
+            <EntityTypeMapping TypeName="nasthaModel.advertiser_staff_cell_phone_numbers">
+              <MappingFragment StoreEntitySet="advertiser_staff_cell_phone_numbers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="staff_name" ColumnName="staff_name" />
+                <ScalarProperty Name="staff_cell_phone_number" ColumnName="staff_cell_phone_number" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="amenities">
+            <EntityTypeMapping TypeName="nasthaModel.amenity">
+              <MappingFragment StoreEntitySet="amenities">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="amenity_types">
+            <EntityTypeMapping TypeName="nasthaModel.amenity_types">
+              <MappingFragment StoreEntitySet="amenity_types">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="amenity_type" ColumnName="amenity_type" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bills">
+            <EntityTypeMapping TypeName="nasthaModel.bill">
+              <MappingFragment StoreEntitySet="bills">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="token_number" ColumnName="token_number" />
+                <ScalarProperty Name="bill_date" ColumnName="bill_date" />
+                <ScalarProperty Name="gross_amount" ColumnName="gross_amount" />
+                <ScalarProperty Name="alcohol_total" ColumnName="alcohol_total" />
+                <ScalarProperty Name="net_amount" ColumnName="net_amount" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="biz_hours">
+            <EntityTypeMapping TypeName="nasthaModel.biz_hours">
+              <MappingFragment StoreEntitySet="biz_hours">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="day_of_week" ColumnName="day_of_week" />
+                <ScalarProperty Name="display_merchant_for" ColumnName="display_merchant_for" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="biz_types">
+            <EntityTypeMapping TypeName="nasthaModel.biz_types">
+              <MappingFragment StoreEntitySet="biz_types">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="city_marketing_budget">
+            <EntityTypeMapping TypeName="nasthaModel.city_marketing_budget">
+              <MappingFragment StoreEntitySet="city_marketing_budget">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="budget" ColumnName="budget" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="marketing_budget_spends">
+            <EntityTypeMapping TypeName="nasthaModel.marketing_budget_spends">
+              <MappingFragment StoreEntitySet="marketing_budget_spends">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="per_city_id" ColumnName="per_city_id" />
+                <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+                <ScalarProperty Name="spent_on_conversions" ColumnName="spent_on_conversions" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="merchants">
+            <EntityTypeMapping TypeName="nasthaModel.merchant">
+              <MappingFragment StoreEntitySet="merchant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="sublocality" ColumnName="sublocality" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="thumbnail_photo_url" ColumnName="thumbnail_photo_url" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="referred_phone_number" ColumnName="referred_phone_number" />
+                <ScalarProperty Name="permanent_cell_phone_number" ColumnName="permanent_cell_phone_number" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="advertiser" ColumnName="advertiser" />
+                <ScalarProperty Name="opt_out" ColumnName="opt_out" />
+                <ScalarProperty Name="cumulative_referrals" ColumnName="cumulative_referrals" />
+                <ScalarProperty Name="black_listed" ColumnName="black_listed" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="merchant_advertisers">
+            <EntityTypeMapping TypeName="nasthaModel.merchant_advertisers">
+              <MappingFragment StoreEntitySet="merchant_advertisers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date_merchant_became_advertiser" ColumnName="date_merchant_became_advertiser" />
+                <ScalarProperty Name="subscription_id" ColumnName="subscription_id" />
+                <ScalarProperty Name="subscription_last_date_change" ColumnName="subscription_last_date_change" />
+                <ScalarProperty Name="info_text" ColumnName="info_text" />
+                <ScalarProperty Name="deposit_balance" ColumnName="deposit_balance" />
+                <ScalarProperty Name="cashback_percentage" ColumnName="cashback_percentage" />
+                <ScalarProperty Name="lowest_balance_reached_date" ColumnName="lowest_balance_reached_date" />
+                <ScalarProperty Name="owner_name" ColumnName="owner_name" />
+                <ScalarProperty Name="owner_cell_phone_number" ColumnName="owner_cell_phone_number" />
+                <ScalarProperty Name="owner_email" ColumnName="owner_email" />
+                <ScalarProperty Name="manager_name" ColumnName="manager_name" />
+                <ScalarProperty Name="manager_cell_phone_number" ColumnName="manager_cell_phone_number" />
+                <ScalarProperty Name="manager_email" ColumnName="manager_email" />
+                <ScalarProperty Name="min_order_value" ColumnName="min_order_value" />
+                <ScalarProperty Name="commission_for_alcohol" ColumnName="commission_for_alcohol" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="monthly_bills">
+            <EntityTypeMapping TypeName="nasthaModel.monthly_bills">
+              <MappingFragment StoreEntitySet="monthly_bills">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="cumul_bill_amt" ColumnName="cumul_bill_amt" />
+                <ScalarProperty Name="total_bills" ColumnName="total_bills" />
+                <ScalarProperty Name="cumul_amt_free_cbk" ColumnName="cumul_amt_free_cbk" />
+                <ScalarProperty Name="cumul_expcbk_today" ColumnName="cumul_expcbk_today" />
+                <ScalarProperty Name="cumul_exp_cbk_pday" ColumnName="cumul_exp_cbk_pday" />
+                <ScalarProperty Name="cumul_comm_today" ColumnName="cumul_comm_today" />
+                <ScalarProperty Name="cumul_comm_pday" ColumnName="cumul_comm_pday" />
+                <ScalarProperty Name="forfeited_amt_today" ColumnName="forfeited_amt_today" />
+                <ScalarProperty Name="forfeited_amt_pday" ColumnName="forfeited_amt_pday" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nastha_credits">
+            <EntityTypeMapping TypeName="nasthaModel.nastha_credits">
+              <MappingFragment StoreEntitySet="nastha_credits">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="credit_received" ColumnName="credit_received" />
+                <ScalarProperty Name="credit_type" ColumnName="credit_type" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nastha_redemptions">
+            <EntityTypeMapping TypeName="nasthaModel.nastha_redemptions">
+              <MappingFragment StoreEntitySet="nastha_redemptions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="amount_redeemed" ColumnName="amount_redeemed" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="nasthaModel.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="token_number" ColumnName="token_number" />
+                <ScalarProperty Name="net_amount" ColumnName="net_amount" />
+                <ScalarProperty Name="gross_amount" ColumnName="gross_amount" />
+                <ScalarProperty Name="alcohol_total" ColumnName="alcohol_total" />
+                <ScalarProperty Name="cashback_percentage" ColumnName="cashback_percentage" />
+                <ScalarProperty Name="prorated_gross_amount" ColumnName="prorated_gross_amount" />
+                <ScalarProperty Name="prorated_alcohol_total" ColumnName="prorated_alcohol_total" />
+                <ScalarProperty Name="order_time" ColumnName="order_time" />
+                <ScalarProperty Name="referral_cost" ColumnName="referral_cost" />
+                <ScalarProperty Name="sor_gross_revenue" ColumnName="sor_gross_revenue" />
+                <ScalarProperty Name="sor_net_revenue" ColumnName="sor_net_revenue" />
+                <ScalarProperty Name="user_commission" ColumnName="user_commission" />
+                <ScalarProperty Name="cashback" ColumnName="cashback" />
+                <ScalarProperty Name="user_payment_to_merchant" ColumnName="user_payment_to_merchant" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pictures">
+            <EntityTypeMapping TypeName="nasthaModel.picture">
+              <MappingFragment StoreEntitySet="picture">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="interior_photo_url" ColumnName="interior_photo_url" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="nasthaModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="cusine_name" ColumnName="cusine_name" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_types">
+            <EntityTypeMapping TypeName="nasthaModel.product_types">
+              <MappingFragment StoreEntitySet="product_types">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="biz_type_id" ColumnName="biz_type_id" />
+                <ScalarProperty Name="product_type" ColumnName="product_type" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="referred_users">
+            <EntityTypeMapping TypeName="nasthaModel.referred_users">
+              <MappingFragment StoreEntitySet="referred_users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="referred_user_email_address" ColumnName="referred_user_email_address" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registration_codes">
+            <EntityTypeMapping TypeName="nasthaModel.registration_codes">
+              <MappingFragment StoreEntitySet="registration_codes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="registration_code" ColumnName="registration_code" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subscriptions">
+            <EntityTypeMapping TypeName="nasthaModel.subscription">
+              <MappingFragment StoreEntitySet="subscriptions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="commission_percentage" ColumnName="commission_percentage" />
+                <ScalarProperty Name="deposit" ColumnName="deposit" />
+                <ScalarProperty Name="min_deposit_balance" ColumnName="min_deposit_balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="system_configs">
+            <EntityTypeMapping TypeName="nasthaModel.system_configs">
+              <MappingFragment StoreEntitySet="system_configs">
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="server_or_app" ColumnName="server_or_app" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tokens">
+            <EntityTypeMapping TypeName="nasthaModel.token">
+              <MappingFragment StoreEntitySet="tokens">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="token_number" ColumnName="token_number" />
+                <ScalarProperty Name="cell_number" ColumnName="cell_number" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tos_agreements">
+            <EntityTypeMapping TypeName="nasthaModel.tos_agreements">
+              <MappingFragment StoreEntitySet="tos_agreements">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="agreement_time" ColumnName="agreement_time" />
+                <ScalarProperty Name="agreement_file" ColumnName="agreement_file" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_merchant_referrals">
+            <EntityTypeMapping TypeName="nasthaModel.user_merchant_referrals">
+              <MappingFragment StoreEntitySet="user_merchant_referrals">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="cell_phone_entered_by_user" ColumnName="cell_phone_entered_by_user" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_types">
+            <EntityTypeMapping TypeName="nasthaModel.user_types">
+              <MappingFragment StoreEntitySet="user_types">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_type" ColumnName="user_type" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="nasthaModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="user_type_id" ColumnName="user_type_id" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="user_deactivated_at" ColumnName="user_deactivated_at" />
+                <ScalarProperty Name="encrypted_password" ColumnName="encrypted_password" />
+                <ScalarProperty Name="reset_password_token" ColumnName="reset_password_token" />
+                <ScalarProperty Name="reset_password_token_sent_at" ColumnName="reset_password_token_sent_at" />
+                <ScalarProperty Name="remember_created_at" ColumnName="remember_created_at" />
+                <ScalarProperty Name="sign_in_count" ColumnName="sign_in_count" />
+                <ScalarProperty Name="current_sign_in_at" ColumnName="current_sign_in_at" />
+                <ScalarProperty Name="last_sign_in_at" ColumnName="last_sign_in_at" />
+                <ScalarProperty Name="current_sign_ip" ColumnName="current_sign_ip" />
+                <ScalarProperty Name="last_sign_in_ip" ColumnName="last_sign_in_ip" />
+                <ScalarProperty Name="confirmation_token" ColumnName="confirmation_token" />
+                <ScalarProperty Name="confirmed_at" ColumnName="confirmed_at" />
+                <ScalarProperty Name="confirmation_sent_at" ColumnName="confirmation_sent_at" />
+                <ScalarProperty Name="failed_attempts" ColumnName="failed_attempts" />
+                <ScalarProperty Name="unlock_token" ColumnName="unlock_token" />
+                <ScalarProperty Name="locked_at" ColumnName="locked_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
