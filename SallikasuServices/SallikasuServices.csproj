@@ -271,8 +271,24 @@
       <DependentUpon>SallikasuModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdvertiserController.cs" />
+    <Compile Include="Controllers\BizTypesController.cs" />
+    <Compile Include="Controllers\GenerateTokenController.cs" />
+    <Compile Include="Controllers\GetAdvertiserForFeaturePhoneController.cs" />
+    <Compile Include="Controllers\GetDestinationController.cs" />
+    <Compile Include="Controllers\GetOrganicMerchantController.cs" />
+    <Compile Include="Controllers\GetProductsForAdvertiserController.cs" />
+    <Compile Include="Controllers\GetRefererController.cs" />
+    <Compile Include="Controllers\GetRegistrationCodeController.cs" />
+    <Compile Include="Controllers\GetSystemConfigController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ReferSallikasuController.cs" />
+    <Compile Include="Controllers\ReferUserController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VerifyRegistrationCodeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -287,8 +303,31 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Controllers\AmenitiesController.cs" />
+    <Compile Include="Models\AddPhoto.cs" />
+    <Compile Include="Models\AdvertiserModel.cs" />
+    <Compile Include="Models\GenerateTokenModel.cs" />
+    <Compile Include="Models\GetAdvertisersForFeaturePhoneModel.cs" />
+    <Compile Include="Models\GetAmenitiesModel.cs" />
+    <Compile Include="Models\GetBizTypes.cs" />
+    <Compile Include="Models\GetDestinationModel.cs" />
+    <Compile Include="Models\GetOrganicMerchantModel.cs" />
+    <Compile Include="Models\GetProductsForAdvertiserModel.cs" />
+    <Compile Include="Models\GetProductTypes.cs" />
+    <Compile Include="Models\GetRefererModel.cs" />
+    <Compile Include="Models\GetSystemConfigModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\NasthaEntitiesConfig.cs" />
+    <Compile Include="Models\ReferSallikasuModel.cs" />
+    <Compile Include="Models\ReferUserModel.cs" />
+    <Compile Include="Models\RegisterUserModel.cs" />
+    <Compile Include="Models\SearchRequestModel.cs" />
+    <Compile Include="Models\SendRechargeModel.cs" />
+    <Compile Include="Models\SendSMSExotel.cs" />
+    <Compile Include="Models\SubscriptionModel.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="Models\ValidateNumberTwillio.cs" />
+    <Compile Include="Models\VerifyRegistrationCodeModel.cs" />
     <Compile Include="monthly_bills.cs">
       <DependentUpon>SallikasuModel.tt</DependentUpon>
     </Compile>
@@ -434,6 +473,23 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Advertiser\" />
+    <Folder Include="Views\Amenities\" />
+    <Folder Include="Views\BizTypes\" />
+    <Folder Include="Views\GenerateToken\" />
+    <Folder Include="Views\GetAdvertiserForFeaturePhone\" />
+    <Folder Include="Views\GetDestination\" />
+    <Folder Include="Views\GetOrganicMerchant\" />
+    <Folder Include="Views\GetProductsForAdvertiser\" />
+    <Folder Include="Views\GetReferer\" />
+    <Folder Include="Views\GetRegistrationCode\" />
+    <Folder Include="Views\GetSystemConfig\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Views\ReferSallikasu\" />
+    <Folder Include="Views\ReferUser\" />
+    <Folder Include="Views\Register\" />
+    <Folder Include="Views\Subscription\" />
+    <Folder Include="Views\VerifyRegistrationCode\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
