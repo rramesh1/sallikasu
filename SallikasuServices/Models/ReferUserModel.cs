@@ -39,7 +39,7 @@ namespace SallikasuServices.Models
                 }
             }
 
-            
+            return true;
 
         }
         bool SmsReferer(string Number)

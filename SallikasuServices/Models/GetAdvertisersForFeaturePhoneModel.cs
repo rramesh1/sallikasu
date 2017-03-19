@@ -22,7 +22,7 @@ namespace SallikasuServices.Models
                                        && m.sublocality == Sublocality
                                        select m).Take(FeaturePhoneLimit).ToList();
 
-            return
+            return tList;
         }
     }
 }

@@ -9,8 +9,15 @@ namespace SallikasuServices.Controllers
     public class ReferUserController : Controller
     {
         // GET: ReferUser
-        public ActionResult Index(int UserID, List<string> Referer)
+        public ActionResult Index(String UserID, List<string> Referer)
         {
+            Models.ReferUserModel tRefer = new Models.ReferUserModel();
+            String  tJson = "{\"status\":\"failed\"}";
+            if ( tRefer.Process(UserID, Referer))
+            {
+                tJson = "{\"status\":\"ok\"}";
+            }
+            return Json(tJson, JsonRequestBehavior.AllowGet);
            
         }
 
