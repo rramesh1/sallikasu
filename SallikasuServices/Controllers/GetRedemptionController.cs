@@ -16,7 +16,7 @@ namespace SallikasuServices.Controllers
             decimal? tTotalRedeemed;
             List<Models.GetRedemptionData> tList;
             String tJson = "{\"status\":\"failed\"}";
-            if ( tModel.Process(userid, StartDate, EndDate, out tTotalRedeemed, out tList)
+            if ( tModel.Process(userid, StartDate, EndDate, out tTotalRedeemed, out tList) )
             {
                 if (tTotalRedeemed != null && tTotalRedeemed != 0 && tList.Count > 0)
                 {

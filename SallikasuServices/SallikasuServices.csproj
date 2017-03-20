@@ -212,6 +212,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="advertiser_deposit.cs">
+      <DependentUpon>SallikasuModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="advertiser_exclusion_dates.cs">
       <DependentUpon>SallikasuModel.tt</DependentUpon>
     </Compile>
@@ -273,12 +276,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdvertiserController.cs" />
     <Compile Include="Controllers\BizTypesController.cs" />
+    <Compile Include="Controllers\CreateDepositController.cs" />
     <Compile Include="Controllers\CreateRedemptionController.cs" />
     <Compile Include="Controllers\DeleteCreditsController.cs" />
     <Compile Include="Controllers\DeleteTokenController.cs" />
     <Compile Include="Controllers\GenerateTokenController.cs" />
     <Compile Include="Controllers\GetAdvertiserForFeaturePhoneController.cs" />
     <Compile Include="Controllers\GetCreditsController.cs" />
+    <Compile Include="Controllers\GetDepositBalanceByAdvertiserController.cs" />
+    <Compile Include="Controllers\GetDepositByUserController.cs" />
     <Compile Include="Controllers\GetDestinationController.cs" />
     <Compile Include="Controllers\GetOrganicMerchantController.cs" />
     <Compile Include="Controllers\GetProductsForAdvertiserController.cs" />
@@ -311,6 +317,7 @@
     <Compile Include="Controllers\AmenitiesController.cs" />
     <Compile Include="Models\AddPhoto.cs" />
     <Compile Include="Models\AdvertiserModel.cs" />
+    <Compile Include="Models\CreateDepositModel.cs" />
     <Compile Include="Models\CreditRedemptionModel.cs" />
     <Compile Include="Models\DeleteCreditsModel.cs" />
     <Compile Include="Models\DeleteTokenModel.cs" />
@@ -319,6 +326,8 @@
     <Compile Include="Models\GetAmenitiesModel.cs" />
     <Compile Include="Models\GetBizTypes.cs" />
     <Compile Include="Models\GetCreditsModel.cs" />
+    <Compile Include="Models\GetDepositBalanceByAdvertiserModel.cs" />
+    <Compile Include="Models\GetDepositByUserModel.cs" />
     <Compile Include="Models\GetDestinationModel.cs" />
     <Compile Include="Models\GetOrganicMerchantModel.cs" />
     <Compile Include="Models\GetProductsForAdvertiserModel.cs" />
@@ -486,12 +495,15 @@
     <Folder Include="Views\Advertiser\" />
     <Folder Include="Views\Amenities\" />
     <Folder Include="Views\BizTypes\" />
+    <Folder Include="Views\CreateDeposit\" />
     <Folder Include="Views\CreateRedemption\" />
     <Folder Include="Views\DeleteCredits\" />
     <Folder Include="Views\DeleteToken\" />
     <Folder Include="Views\GenerateToken\" />
     <Folder Include="Views\GetAdvertiserForFeaturePhone\" />
     <Folder Include="Views\GetCredits\" />
+    <Folder Include="Views\GetDepositBalanceByAdvertiser\" />
+    <Folder Include="Views\GetDepositByUser\" />
     <Folder Include="Views\GetDestination\" />
     <Folder Include="Views\GetOrganicMerchant\" />
     <Folder Include="Views\GetProductsForAdvertiser\" />

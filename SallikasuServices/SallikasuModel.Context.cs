@@ -52,5 +52,6 @@ namespace SallikasuServices
         public virtual DbSet<user_merchant_referrals> user_merchant_referrals { get; set; }
         public virtual DbSet<user_types> user_types { get; set; }
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<advertiser_deposit> advertiser_deposit { get; set; }
     }
 }

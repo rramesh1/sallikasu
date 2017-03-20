@@ -43,10 +43,13 @@ namespace SallikasuServices.Models
             return true;
         }
     }
-    class GetRedemptionData
+    public class GetRedemptionData
     {
+        public GetRedemptionData()
+        { }
         public String merchant_name { get; set; }
         public string city { get; set; }
         public decimal? amount_redeemed { get; set; }
         public DateTime created_at { get; set; }
+    }
 }

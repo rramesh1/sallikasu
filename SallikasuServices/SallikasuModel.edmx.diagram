@@ -47,6 +47,8 @@
         <AssociationConnector Association="nasthaModel.FK_RCMerchant" ManuallyRouted="false" />
         <AssociationConnector Association="nasthaModel.FK_TokensMerchant" ManuallyRouted="false" />
         <AssociationConnector Association="nasthaModel.FK_TOSMerchant" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="nasthaModel.advertiser_deposit" Width="1.5" PointX="3" PointY="58.125" />
+        <AssociationConnector Association="nasthaModel.merchantidkey" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

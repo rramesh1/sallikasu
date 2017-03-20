@@ -17,8 +17,6 @@ namespace SallikasuServices.Models
         {
             try
             {
-
-
                 /*
                  * If the Server does NOT find the user_id in the users table AND the merchant_id in the merchant_advertisers table, then Server creates a record in the sallikasu_redemptions table..
                  */
@@ -36,11 +34,15 @@ namespace SallikasuServices.Models
                         DB.nastha_redemptions.Add(tRedemption);
                         DB.SaveChanges();
                     }
+                    else
+                    {
+                        return false;
+                    }
                 }
-                /*
-                 * If the Server does NOT find the user_id in the users table AND the merchant_id in the merchant_advertisers table, then Server returns a Failure response."
-                 * 
-                 */
+                else
+                {
+                    return false;
+                }
             }
             catch(Exception ex)
             {

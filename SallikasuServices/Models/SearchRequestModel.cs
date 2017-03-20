@@ -12,7 +12,7 @@ namespace SallikasuServices.Models
         {
             DB = new nasthaEntities();
         }
-        public List<merchant> Get(String State, String City, String Sublocality,String BusinessType, String products, String AlcoholServed , DateTime CurrentDateTime)
+        public List<SearchRequestData> Get(String State, String City, String Sublocality,String BusinessType, String products, String AlcoholServed , DateTime CurrentDateTime)
         {
             List<SearchRequestData> tList = (from m in DB.merchants
                                     where m.state == State && m.city == City
