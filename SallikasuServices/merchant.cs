@@ -33,6 +33,7 @@ namespace SallikasuServices
             this.tokens = new HashSet<token>();
             this.tos_agreements = new HashSet<tos_agreements>();
             this.advertiser_deposit = new HashSet<advertiser_deposit>();
+            this.advertiser_users = new HashSet<advertiser_users>();
         }
     
         public int id { get; set; }
@@ -92,5 +93,7 @@ namespace SallikasuServices
         public virtual ICollection<tos_agreements> tos_agreements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<advertiser_deposit> advertiser_deposit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<advertiser_users> advertiser_users { get; set; }
     }
 }

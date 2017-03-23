@@ -37,6 +37,16 @@
           <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="advertiser_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="merchant_id" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Precision="0" />
+          <Property Name="updated_at" Type="datetime" Precision="0" />
+        </EntityType>
         <EntityType Name="amenities">
           <Key>
             <PropertyRef Name="id" />
@@ -188,6 +198,7 @@
           <Property Name="year" Type="int" />
           <Property Name="created_at" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="updated_at" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="tax" Type="decimal" Precision="6" Scale="2" />
         </EntityType>
         <EntityType Name="nastha_credits">
           <Key>
@@ -563,6 +574,18 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="merchantidfkey">
+          <End Role="merchant" Type="Self.merchant" Multiplicity="1" />
+          <End Role="advertiser_users" Type="Self.advertiser_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="advertiser_users">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="merchantidkey">
           <End Role="merchant" Type="Self.merchant" Multiplicity="1" />
           <End Role="advertiser_deposit" Type="Self.advertiser_deposit" Multiplicity="*" />
@@ -575,10 +598,23 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="useridfkey">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="advertiser_users" Type="Self.advertiser_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="advertiser_users">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="nasthaModelStoreContainer">
           <EntitySet Name="advertiser_deposit" EntityType="Self.advertiser_deposit" Schema="nastha" store:Type="Tables" />
           <EntitySet Name="advertiser_exclusion_dates" EntityType="Self.advertiser_exclusion_dates" Schema="nastha" store:Type="Tables" />
           <EntitySet Name="advertiser_staff_cell_phone_numbers" EntityType="Self.advertiser_staff_cell_phone_numbers" Schema="nastha" store:Type="Tables" />
+          <EntitySet Name="advertiser_users" EntityType="Self.advertiser_users" Schema="nastha" store:Type="Tables" />
           <EntitySet Name="amenities" EntityType="Self.amenities" Schema="nastha" store:Type="Tables" />
           <EntitySet Name="amenity_types" EntityType="Self.amenity_types" Schema="nastha" store:Type="Tables" />
           <EntitySet Name="bills" EntityType="Self.bills" Schema="nastha" store:Type="Tables" />
@@ -664,9 +700,17 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
             <End Role="merchant" EntitySet="merchant" />
             <End Role="tos_agreements" EntitySet="tos_agreements" />
           </AssociationSet>
+          <AssociationSet Name="merchantidfkey" Association="Self.merchantidfkey">
+            <End Role="merchant" EntitySet="merchant" />
+            <End Role="advertiser_users" EntitySet="advertiser_users" />
+          </AssociationSet>
           <AssociationSet Name="merchantidkey" Association="Self.merchantidkey">
             <End Role="merchant" EntitySet="merchant" />
             <End Role="advertiser_deposit" EntitySet="advertiser_deposit" />
+          </AssociationSet>
+          <AssociationSet Name="useridfkey" Association="Self.useridfkey">
+            <End Role="users" EntitySet="users" />
+            <End Role="advertiser_users" EntitySet="advertiser_users" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -821,6 +865,7 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
           <NavigationProperty Name="tokens" Relationship="Self.FK_TokensMerchant" FromRole="merchant" ToRole="tokens" />
           <NavigationProperty Name="tos_agreements" Relationship="Self.FK_TOSMerchant" FromRole="merchant" ToRole="tos_agreements" />
           <NavigationProperty Name="advertiser_deposit" Relationship="nasthaModel.merchantidkey" FromRole="merchant" ToRole="advertiser_deposit" />
+          <NavigationProperty Name="advertiser_users" Relationship="nasthaModel.merchantidfkey" FromRole="merchant" ToRole="advertiser_users" />
         </EntityType>
         <EntityType Name="merchant_advertisers">
           <Key>
@@ -868,6 +913,7 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
           <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="merchant" Relationship="Self.FK_MBtMerchant" FromRole="monthly_bills" ToRole="merchant" />
+          <Property Name="tax" Type="Decimal" />
         </EntityType>
         <EntityType Name="nastha_credits">
           <Key>
@@ -1064,6 +1110,7 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
           <Property Name="locked_at" Type="DateTime" Nullable="false" />
           <Property Name="created_at" Type="DateTime" Nullable="false" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="advertiser_users" Relationship="nasthaModel.useridfkey" FromRole="user" ToRole="advertiser_users" />
         </EntityType>
         <Association Name="FK_ADVTMerchant">
           <End Role="merchant" Type="Self.merchant" Multiplicity="1" />
@@ -1338,6 +1385,15 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
             <End Role="merchant" EntitySet="merchants" />
             <End Role="advertiser_deposit" EntitySet="advertiser_deposit" />
           </AssociationSet>
+          <EntitySet Name="advertiser_users" EntityType="nasthaModel.advertiser_users" />
+          <AssociationSet Name="merchantidfkey" Association="nasthaModel.merchantidfkey">
+            <End Role="merchant" EntitySet="merchants" />
+            <End Role="advertiser_users" EntitySet="advertiser_users" />
+          </AssociationSet>
+          <AssociationSet Name="useridfkey" Association="nasthaModel.useridfkey">
+            <End Role="user" EntitySet="users" />
+            <End Role="advertiser_users" EntitySet="advertiser_users" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="advertiser_deposit">
           <Key>
@@ -1360,6 +1416,42 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
             </Principal>
             <Dependent Role="advertiser_deposit">
               <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="advertiser_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="merchant_id" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" />
+          <Property Name="updated_at" Type="DateTime" />
+          <NavigationProperty Name="merchant" Relationship="nasthaModel.merchantidfkey" FromRole="advertiser_users" ToRole="merchant" />
+          <NavigationProperty Name="user" Relationship="nasthaModel.useridfkey" FromRole="advertiser_users" ToRole="user" />
+        </EntityType>
+        <Association Name="merchantidfkey">
+          <End Type="nasthaModel.merchant" Role="merchant" Multiplicity="1" />
+          <End Type="nasthaModel.advertiser_users" Role="advertiser_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="merchant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="advertiser_users">
+              <PropertyRef Name="merchant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="useridfkey">
+          <End Type="nasthaModel.user" Role="user" Multiplicity="1" />
+          <End Type="nasthaModel.advertiser_users" Role="advertiser_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="advertiser_users">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1536,6 +1628,7 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
           <EntitySetMapping Name="monthly_bills">
             <EntityTypeMapping TypeName="nasthaModel.monthly_bills">
               <MappingFragment StoreEntitySet="monthly_bills">
+                <ScalarProperty Name="tax" ColumnName="tax" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
                 <ScalarProperty Name="cumul_bill_amt" ColumnName="cumul_bill_amt" />
@@ -1765,6 +1858,17 @@ warning 6035: The relationship 'FK_MerchantBizType' has columns that are not par
                 <ScalarProperty Name="amount_deposit" ColumnName="amount_deposit" />
                 <ScalarProperty Name="deposit_received_dt" ColumnName="deposit_received_dt" />
                 <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="advertiser_users">
+            <EntityTypeMapping TypeName="nasthaModel.advertiser_users">
+              <MappingFragment StoreEntitySet="advertiser_users">
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="merchant_id" ColumnName="merchant_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

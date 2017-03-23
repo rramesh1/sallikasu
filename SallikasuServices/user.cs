@@ -14,6 +14,12 @@ namespace SallikasuServices
     
     public partial class user
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public user()
+        {
+            this.advertiser_users = new HashSet<advertiser_users>();
+        }
+    
         public int id { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
@@ -38,5 +44,8 @@ namespace SallikasuServices
         public System.DateTime locked_at { get; set; }
         public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<advertiser_users> advertiser_users { get; set; }
     }
 }

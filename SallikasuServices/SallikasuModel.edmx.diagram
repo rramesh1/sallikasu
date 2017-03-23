@@ -49,6 +49,9 @@
         <AssociationConnector Association="nasthaModel.FK_TOSMerchant" ManuallyRouted="false" />
         <EntityTypeShape EntityType="nasthaModel.advertiser_deposit" Width="1.5" PointX="3" PointY="58.125" />
         <AssociationConnector Association="nasthaModel.merchantidkey" />
+        <EntityTypeShape EntityType="nasthaModel.advertiser_users" Width="1.5" PointX="8" PointY="21.125" />
+        <AssociationConnector Association="nasthaModel.merchantidfkey" />
+        <AssociationConnector Association="nasthaModel.useridfkey" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

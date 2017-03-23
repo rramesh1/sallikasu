@@ -221,6 +221,9 @@
     <Compile Include="advertiser_staff_cell_phone_numbers.cs">
       <DependentUpon>SallikasuModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="advertiser_users.cs">
+      <DependentUpon>SallikasuModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="amenity.cs">
       <DependentUpon>SallikasuModel.tt</DependentUpon>
     </Compile>
@@ -276,6 +279,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdvertiserController.cs" />
     <Compile Include="Controllers\BizTypesController.cs" />
+    <Compile Include="Controllers\CancelSubscriptionController.cs" />
     <Compile Include="Controllers\CreateDepositController.cs" />
     <Compile Include="Controllers\CreateRedemptionController.cs" />
     <Compile Include="Controllers\DeleteCreditsController.cs" />
@@ -290,11 +294,13 @@
     <Compile Include="Controllers\GetDepositByUserController.cs" />
     <Compile Include="Controllers\GetDestinationController.cs" />
     <Compile Include="Controllers\GetMySubscriptionController.cs" />
+    <Compile Include="Controllers\GetNetRevenueController.cs" />
     <Compile Include="Controllers\GetOrganicMerchantController.cs" />
     <Compile Include="Controllers\GetProductsForAdvertiserController.cs" />
     <Compile Include="Controllers\GetRedemptionController.cs" />
     <Compile Include="Controllers\GetRefererController.cs" />
     <Compile Include="Controllers\GetRegistrationCodeController.cs" />
+    <Compile Include="Controllers\GetServiceTaxController.cs" />
     <Compile Include="Controllers\GetSubscriptionsByAllAdvertiserController.cs" />
     <Compile Include="Controllers\GetSystemConfigController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -303,6 +309,7 @@
     <Compile Include="Controllers\ReferUserController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
+    <Compile Include="Controllers\TransactionMetricsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VerifyRegistrationCodeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -322,6 +329,7 @@
     <Compile Include="Controllers\AmenitiesController.cs" />
     <Compile Include="Models\AddPhoto.cs" />
     <Compile Include="Models\AdvertiserModel.cs" />
+    <Compile Include="Models\CancelSubscriptionModel.cs" />
     <Compile Include="Models\CreateDepositModel.cs" />
     <Compile Include="Models\CreditRedemptionModel.cs" />
     <Compile Include="Models\DeleteCreditsModel.cs" />
@@ -338,11 +346,13 @@
     <Compile Include="Models\GetDepositByUserModel.cs" />
     <Compile Include="Models\GetDestinationModel.cs" />
     <Compile Include="Models\GetMySubscriptionModel.cs" />
+    <Compile Include="Models\GetNetRevenueModel.cs" />
     <Compile Include="Models\GetOrganicMerchantModel.cs" />
     <Compile Include="Models\GetProductsForAdvertiserModel.cs" />
     <Compile Include="Models\GetProductTypes.cs" />
     <Compile Include="Models\GetRedemptionModel.cs" />
     <Compile Include="Models\GetRefererModel.cs" />
+    <Compile Include="Models\GetServiceTaxModel.cs" />
     <Compile Include="Models\GetSubscriptionByAllAdvertiserModel.cs" />
     <Compile Include="Models\GetSystemConfigModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -354,6 +364,7 @@
     <Compile Include="Models\SendRechargeModel.cs" />
     <Compile Include="Models\SendSMSExotel.cs" />
     <Compile Include="Models\SubscriptionModel.cs" />
+    <Compile Include="Models\TransactionMetricsModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\ValidateNumberTwillio.cs" />
     <Compile Include="Models\VerifyRegistrationCodeModel.cs" />
@@ -505,6 +516,7 @@
     <Folder Include="Views\Advertiser\" />
     <Folder Include="Views\Amenities\" />
     <Folder Include="Views\BizTypes\" />
+    <Folder Include="Views\CancelSubscription\" />
     <Folder Include="Views\CreateDeposit\" />
     <Folder Include="Views\CreateRedemption\" />
     <Folder Include="Views\DeleteCredits\" />
@@ -519,11 +531,13 @@
     <Folder Include="Views\GetDepositByUser\" />
     <Folder Include="Views\GetDestination\" />
     <Folder Include="Views\GetMySubscription\" />
+    <Folder Include="Views\GetNetRevenue\" />
     <Folder Include="Views\GetOrganicMerchant\" />
     <Folder Include="Views\GetProductsForAdvertiser\" />
     <Folder Include="Views\GetRedemption\" />
     <Folder Include="Views\GetReferer\" />
     <Folder Include="Views\GetRegistrationCode\" />
+    <Folder Include="Views\GetServiceTax\" />
     <Folder Include="Views\GetSubscriptionsByAllAdvertiser\" />
     <Folder Include="Views\GetSystemConfig\" />
     <Folder Include="Views\Product\" />
@@ -531,6 +545,7 @@
     <Folder Include="Views\ReferUser\" />
     <Folder Include="Views\Register\" />
     <Folder Include="Views\Subscription\" />
+    <Folder Include="Views\TransactionMatrix\" />
     <Folder Include="Views\VerifyRegistrationCode\" />
   </ItemGroup>
   <ItemGroup>

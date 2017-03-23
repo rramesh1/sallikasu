@@ -29,6 +29,7 @@ namespace SallikasuServices
         public Nullable<int> year { get; set; }
         public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
+        public Nullable<decimal> tax { get; set; }
     
         public virtual merchant merchant { get; set; }
     }
